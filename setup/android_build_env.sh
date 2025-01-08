@@ -8,16 +8,16 @@
 
 LATEST_MAKE_VERSION="4.3"
 UBUNTU_16_PACKAGES="libesd0-dev"
-UBUNTU_20_PACKAGES="libncurses5 curl python-is-python3"
-DEBIAN_10_PACKAGES="libncurses5"
-DEBIAN_11_PACKAGES="libncurses5"
+UBUNTU_20_PACKAGES="libncurses5-dev curl python-is-python3"
+DEBIAN_10_PACKAGES="libncurses5-dev"
+DEBIAN_11_PACKAGES="libncurses5-dev"
 PACKAGES=""
 
 sudo apt install software-properties-common -y
 sudo apt update
 
-# Install lsb-core packages
-sudo apt install lsb-core -y
+# Install lsb-base packages
+sudo apt install lsb-base -y
 
 LSB_RELEASE="$(lsb_release -d | cut -d ':' -f 2 | sed -e 's/^[[:space:]]*//')"
 
@@ -36,13 +36,13 @@ sudo DEBIAN_FRONTEND=noninteractive \
     adb autoconf automake axel bc bison build-essential \
     ccache clang cmake curl expat fastboot flex g++ \
     g++-multilib gawk gcc gcc-multilib git git-lfs gnupg gperf \
-    htop imagemagick lib32ncurses5-dev lib32z1-dev libtinfo5 libc6-dev libcap-dev \
+    htop imagemagick lib32z1-dev libc6-dev libcap-dev \
     libexpat1-dev libgmp-dev '^liblz4-.*' '^liblzma.*' libmpc-dev libmpfr-dev libncurses5-dev \
     libsdl1.2-dev libssl-dev libtool libxml2 libxml2-utils '^lzma.*' lzop \
-    maven ncftp ncurses-dev patch patchelf pkg-config pngcrush \
-    pngquant python2.7 python3-pyelftools python-all-dev re2c schedtool squashfs-tools subversion \
+    maven ncftp patch patchelf pkg-config pngcrush \
+    pngquant python3 re2c schedtool squashfs-tools subversion \
     texinfo unzip w3m xsltproc zip zlib1g-dev lzip \
-    libxml-simple-perl libswitch-perl apt-utils rsync \
+    libxml-simple-perl libswitch-perl apt-utils rsync lld llvm \
     ${PACKAGES} -y
 
 echo -e "Installing GitHub CLI"
